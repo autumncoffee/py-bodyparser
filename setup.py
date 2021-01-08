@@ -151,17 +151,24 @@ def lscpp(dir_):
     return out
 
 
+def if_darwin(list_):
+    if sys.platform == 'darwin':
+        return list_
+
+    return []
+
+
 ac_bodyparser = Extension(
     'ac_bodyparser.impl',
     language='c++',
 
     extra_compile_args=[
         '-std=c++17',
-        '-stdlib=libc++',
+        *if_darwin(['-stdlib=libc++']),
     ],
 
     extra_link_args=[
-        '-stdlib=libc++',
+        *if_darwin(['-stdlib=libc++']),
     ],
 
     sources=lscpp('src'),
