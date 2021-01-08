@@ -8,7 +8,6 @@ import sys
 import shutil
 import urllib.request as http
 import tarfile
-import certifi
 from ssl import create_default_context
 
 
@@ -65,6 +64,8 @@ def mkincludes():
     (fh, path_) = mkstemp()
     path = path_ + '-inc'
     os.mkdir(path)
+
+    import certifi
 
     sslctx = create_default_context(cafile=certifi.where())
 
@@ -173,6 +174,14 @@ setup(
     packages=find_packages(),
     ext_modules=[
         ac_bodyparser,
+    ],
+
+    setup_requires=[
+        'certifi',
+    ],
+
+    install_requires=[
+        'certifi',
     ],
 
     cmdclass={
