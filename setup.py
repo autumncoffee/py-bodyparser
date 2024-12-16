@@ -11,8 +11,8 @@ import tarfile
 from ssl import create_default_context
 
 
-AC_COMMON = ('ac-common', 'cxx-common', 'v1.0.1')
-AC_LIBRARY = ('ac-library', 'cxx-library', 'v1.0.3')
+AC_COMMON = ('ac-common', 'cxx-common', 'v1.0.3')
+AC_LIBRARY = ('ac-library', 'cxx-library', 'v1.0.6')
 
 
 class BuildExtCommand(build_ext):
@@ -177,7 +177,7 @@ ac_bodyparser = Extension(
 
 setup(
     name='ac_bodyparser',
-    version='1.0.0',
+    version='1.0.1',
     packages=find_packages(),
     ext_modules=[
         ac_bodyparser,
